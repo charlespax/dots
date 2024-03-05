@@ -1,3 +1,68 @@
 Follow instructions in this video
 https://www.youtube.com/watch?v=QAmTUkzpIiM
 
+
+
+=== Install Arch ===
+
+iwctl station wlan0 connect <ssid>
+
+archinstall
+
+=== reboot ===
+
+sudo pacman -S sway swaybg foot polkit
+
+=== Install Other Packages ===
+neovim
+adobe-source-code-pro-fonts
+ttf-font-awesome
+ttf-roboto-mono
+neofetch
+git
+
+=== run sway ===
+
+sway
+
+=== open terminal ===
+
+Super Enter
+
+=== Make Sway Config ===
+
+mkdir -p ~/.config/sway
+cp /etc/sway/config ~/.config/sway/config
+
+# Add to sway config
+# font pango: SourceCodePro Medium 12
+
+=== configure foot ===
+mkdir -p ~/.config/foot
+cp /etc/xdg/foot/foot.ini ~/.config/foot/
+
+# Add to foot config
+# ront= Source Code Pro:size=10
+
+
+=== Install Application launcher ===
+sudo pacman -S wofi
+
+# In sway config modify
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu wofi --show run
+# reload sway with mod-shift-c
+
+
+=== Install waybar ===
+sudo pacman -S waybar
+
+# edit sway config, bar{} section
+# bar {
+#     swaybar_command waybar
+# }
+# reload sway
+
+mkdir -p ~/.config/waybar
+cp /etc/xdg/waybar/* ~/.config/waybar/
+
