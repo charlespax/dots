@@ -11,7 +11,7 @@ archinstall
 
 === reboot ===
 
-sudo pacman -S sway swaybg foot polkit
+sudo pacman -S sway swaybg foot polkit wofi
 
 === Install Other Packages ===
 neovim
@@ -42,7 +42,7 @@ mkdir -p ~/.config/foot
 cp /etc/xdg/foot/foot.ini ~/.config/foot/
 
 # Add to foot config
-# ront= Source Code Pro:size=10
+# font= Source Code Pro:size=10
 
 
 === Install Application launcher ===
