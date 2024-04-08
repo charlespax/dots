@@ -1,0 +1,12 @@
+### How do move .mozilla to .config
+
+See https://bbs.archlinux.org/viewtopic.php?id=254539
+
+Create this script:
+	#!/bin/sh
+	/usr/bin/firefox --profile \
+	"${HOME}/.config/path/to/profile" "$@"
+
+Add this script to PATH. Does it matter if the script comes
+before or after the path to the firefox binary?
+
