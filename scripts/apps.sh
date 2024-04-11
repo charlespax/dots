@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Applications in the APPLIST are installed on top of
 # the Arch base install

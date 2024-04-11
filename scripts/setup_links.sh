@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script creates links for the dotfiles contained within this
 # Github repository.

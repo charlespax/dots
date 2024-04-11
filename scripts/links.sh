@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Create alacritty link
 echo "TODO link alacritty"
