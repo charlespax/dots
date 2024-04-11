@@ -1,0 +1,6 @@
+w3m <url>       open url
+
+
+options
+-------
+  -num          display line numbers
