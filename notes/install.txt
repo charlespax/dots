@@ -1,3 +1,9 @@
+*********************************************
+**  Arch Installation Notes
+**  
+**  Sway
+*********************************************
+
 Follow instructions in this video
 https://www.youtube.com/watch?v=QAmTUkzpIiM
 
@@ -5,29 +11,41 @@ https://www.youtube.com/watch?v=QAmTUkzpIiM
 
 === Install Arch ===
 
+== Boot into installation media
+
 iwctl station wlan0 connect <ssid>
 
-archinstall
+$ archinstall
 
+    Profile: Minimal
+    Audio: Pipewire                                *******************
+    Additional packages: iwd         <------------ * SUPER IMPOTRANT *
+                                                   *******************
 === reboot ===
+Install base Sway system
 
-sudo pacman -S sway swaybg foot polkit wofi
+    $ sudo pacman -S \
+        sway \
+        swaybg \
+        foot \
+        polkit \
+        wofi \
+        waybar
+
+Boot into system. Start Sway.
+
+    $ sway
+
+Open terminal: Super+Enter
 
 === Install Other Packages ===
-neovim
-adobe-source-code-pro-fonts
-ttf-font-awesome
-ttf-roboto-mono
-neofetch
-git
-
-=== run sway ===
-
-sway
-
-=== open terminal ===
-
-Super Enter
+    $ sudo pacman -S \
+        neovim \
+        adobe-source-code-pro-fonts \
+        ttf-font-awesome \
+        ttf-roboto-mono \
+        neofetch \
+        git
 
 === Make Sway Config ===
 
@@ -46,8 +64,6 @@ cp /etc/xdg/foot/foot.ini ~/.config/foot/
 
 
 === Install Application launcher ===
-sudo pacman -S wofi
-
 # In sway config modify
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # set $menu wofi --show run
@@ -55,8 +71,6 @@ sudo pacman -S wofi
 
 
 === Install waybar ===
-sudo pacman -S waybar
-
 # edit sway config, bar{} section
 # bar {
 #     swaybar_command waybar

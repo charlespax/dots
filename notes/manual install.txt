@@ -1,0 +1,124 @@
+                             Arch Installation Notes
+                            =========================
+Pre Installation
+----------------
+- See guide at 
+  https://www.arcolinuxd.com/5-the-actual-installation-of-arch-linux-phase-1-bios/
+- List guided install scripts:  archinstall --script list
+- Mount the USB installation media:
+        mkdir -p /mnt/usb
+        mount /dev/sda1 /mnt/usb
+- WiFi Setup
+        iwctl device list
+        iwctl station <device> scan
+        iwctl station <device> get-networks
+        iwctl station <device> connect <SSID>
+- Installation script from youtuber: https://www.youtube.com/watch?v=hKpxMWm5l7w
+        bash <(curl -L christitus.com/archtitus)>
+- List disks
+        fdisk -l
+- Wipe disk  *** WARNING: DESTROYS ALL DATA ***
+        wipefs -a /dev/<disk>
+- Partation disk
+        cfdisk
+    * Select DOS label
+    * make a primary Linux partation (type 83). Make bootable
+    * make a Linux swap partation (type 82)
+- See disks layout
+        lsblk
+- Format disk partations
+        mkfs.ext4 /dev/<root partaion>
+        mkswap /dev/<swap partation>
+        swapon /dev/<swap partation>
+- Mount the filesystem
+        mount /dev/sda1 /mnt
+- Select mirrors (only things are going too slowly)
+        nano /etc/pacman.d/mirrorlist
+- Install base and base-devel packages
+        pacstrap /mnt base base-devel linux linux-firmware nano
+- Generate an fstab
+        genfstab -U /mnt >> /mnt/etc/fstab
+        cat /mnt/etc/fstab
+- chroot into new system
+        arch-chroot /mnt
+- chroot set timezone
+        ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+- chroot set system clock
+        hwclock --systohc
+- chroot set locale
+        nano /etc/locale.gen
+    * uncomment en_US.UTF-8 UTF-8
+    * save and exit nano
+    * generate the locale
+        locale-gen
+- chroot set language
+        echo LANG=en_US.UTF-8 > /etc/locale.conf
+        echo KEYMAP=us > /etc/vconsole.conf
+- chroot set hostname
+        echo <hostname> > /etc/hostname
+- chroot edit hosts file
+        nano /etc/hosts
+    * all these lines below
+        127.0.0.1   localhost
+        ::1         localhost
+        127.0.0.1   <hostname>.localdomain  <hostname>
+- chroot network configuration
+    * install networkmanager
+        pacman -S networkmanager
+        systemctl enable NetworkManager
+    * install iwd for WiFi access
+        pacman -S iwd
+- chroot add root password
+        passwd
+- chroot install bootloader
+        pacman -S grub
+        grub-install --target=i386-pc /dev/sda
+        grub-mkconfig -o /boot/grub/grub.cfg
+- chroot exit chroot
+        exit
+- unmount disks
+        umount -R /mnt
+- REBOOT
+        reboot
+- Enable pacman ParallelDownloads
+        nano /etc/pacman.conf
+-Include multilib repositories
+        nano /etc/pacman.conf
+    * uncomment:
+      [multilib]
+      include = /etc/pacman.d/mirrorlist
+- Create user account
+        useradd -m -g users -G audio,video,network,wheel,storage,rfkill -s /bin/bash <username>
+        passwd <username>
+    * add to sudoers
+        EDITOR=nano visudo
+      uncomment:
+      %wheel ALL=(ALL:ALL) ALL
+- Exit
+        exit
+- Login with <username>
+- Configure WiFi
+    * enable iwd service
+        systemctl enable iwd.service
+    * setup wifi
+        iwctl device list
+        iwctl station <device> scan
+        iwctl station <device> get-networks
+        iwctl station <device> connect <SSID>
+        
+
+
+
+During installation
+-------------------
+- Additional packages:
+    vim git firefox htop neofetch less w3m xterm
+
+Post Installation
+-----------------
+- update pacman database:  sudo pacman -Syy
+- enable dmesg for non-root:  sudo sysctl kernel.dmesg_restrict=0
+- Printer Setupi - Issue: Brother printer is not detected on the network
+        sudo systemctl start avahi-daemon
+        sudo systemctl enable avahi-daemon
+- install a print system
