@@ -12,3 +12,9 @@
 
 === File Control ===
   <leader> w            write file
+
+=== Multiple Files ===
+Crtl-[hjkl]  navigation between panes
+
+  :vsp <filesname>      open file in a vertical split Ctrl-[hjkl]
+  :<num>sp <filename>   open file in horizontal split of NUM lines Ctrl-[hjkl]

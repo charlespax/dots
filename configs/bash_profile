@@ -6,6 +6,11 @@
 # Command aliases #
 # ================#
 
+# Command: lz
+# Description: run lazygit
+# Usage: lz
+alias lz='lazygit'
+
 # Command: halp
 # Description: Print help message for this file
 alias halp="echo '\

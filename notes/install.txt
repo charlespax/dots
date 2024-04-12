@@ -8,21 +8,28 @@ Follow instructions in this video
 https://www.youtube.com/watch?v=QAmTUkzpIiM
 
 
+== Boot into installation media ===
+Just boot it up!
 
-=== Install Arch ===
 
-== Boot into installation media
+=== Base Installation  ==
+Configure WiFi
 
-iwctl station wlan0 connect <ssid>
+    $ iwctl station wlan0 connect <ssid>
 
-$ archinstall
+Begin Arch installation
+    $ archinstall
 
+Important configuration notes:
     Profile: Minimal
     Audio: Pipewire                                *******************
     Additional packages: iwd         <------------ * SUPER IMPOTRANT *
+    Network configuration: Copy ISO...
                                                    *******************
-=== reboot ===
-Install base Sway system
+Reboot system.
+
+
+=== Install Sway ===
 
     $ sudo pacman -S \
         sway \
@@ -32,11 +39,11 @@ Install base Sway system
         wofi \
         waybar
 
-Boot into system. Start Sway.
-
+Launch Sway
     $ sway
 
 Open terminal: Super+Enter
+
 
 === Install Other Packages ===
     $ sudo pacman -S \
@@ -47,7 +54,8 @@ Open terminal: Super+Enter
         neofetch \
         git
 
-=== Make Sway Config ===
+
+=== Configure Sway ===
 
 mkdir -p ~/.config/sway
 cp /etc/sway/config ~/.config/sway/config
@@ -55,7 +63,19 @@ cp /etc/sway/config ~/.config/sway/config
 # Add to sway config
 # font pango: SourceCodePro Medium 12
 
-=== configure foot ===
+# In sway config modify
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu wofi --show run
+# reload sway with mod-shift-c
+
+# edit sway config, bar{} section
+# bar {
+#     swaybar_command waybar
+# }
+# reload sway
+
+
+=== Configure foot ===
 mkdir -p ~/.config/foot
 cp /etc/xdg/foot/foot.ini ~/.config/foot/
 
@@ -63,20 +83,7 @@ cp /etc/xdg/foot/foot.ini ~/.config/foot/
 # font= Source Code Pro:size=10
 
 
-=== Install Application launcher ===
-# In sway config modify
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
-# set $menu wofi --show run
-# reload sway with mod-shift-c
-
-
-=== Install waybar ===
-# edit sway config, bar{} section
-# bar {
-#     swaybar_command waybar
-# }
-# reload sway
-
+=== Configure waybar ===
 mkdir -p ~/.config/waybar
 cp /etc/xdg/waybar/* ~/.config/waybar/
 
