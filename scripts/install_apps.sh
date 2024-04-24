@@ -5,39 +5,71 @@
 APPLIST=''
 
 # Desktop Environment
-APPLIST+=' sway'     # sway desktop
-APPLIST+=' swaybg'   # desktop background image tool
-APPLIST+=' swayidle' # idle manager
-APPLIST+=' swaylock' # screen lock
-APPLIST+=' foot'     # terminal emulator
-APPLIST+=' polkit'   # TODO what is polkit?
-APPLIST+=' wofi'     # TODO application launcher ?
+read -n1 -p "Install Sway? [y,n] " installsway
+case $installsway in
+    y|Y)
+        APPLIST+=' sway'     # sway desktop
+        APPLIST+=' swaybg'   # desktop background image tool
+        APPLIST+=' swayidle' # idle manager
+        APPLIST+=' swaylock' # screen lock
+        APPLIST+=' foot'     # terminal emulator
+        APPLIST+=' polkit'   # TODO what is polkit?
+        APPLIST+=' wofi'     # TODO application launcher ?
+        echo ' installing Sway' ;;
+    n|N) echo ' skip' ;;
+    *)   echo ' skip' ;;
+esac
+
 #APPLIST+=' waybar'   # info bar at top of screen
 
 # Fonts
-APPLIST+=' adobe-source-code-pro-fonts'
-APPLIST+=' ttf-font-awesome'
-APPLIST+=' ttf-roboto-mono'
+read -n1 -p "Install fonts? [y,n] " installdev
+case $installdev in
+    y|Y)
+        APPLIST+=' adobe-source-code-pro-fonts'
+        APPLIST+=' ttf-font-awesome'
+        APPLIST+=' ttf-roboto-mono'
+        echo ' installing fonts'
+        ;;
+    n|N) echo ' skip' ;;
+    *)   echo ' skip' ;;
+esac
 
 # Development Tools
-APPLIST+=' git'
-APPLIST+=' base-devel'
+read -n1 -p "Install dev tools? [y,n] " installdev
+case $installdev in
+    y|Y)
+        APPLIST+=' git'
+        APPLIST+=' base-devel'
+        echo ' installing dev tools'
+        ;;
+    n|N) echo ' skip' ;;
+    *)   echo ' skip' ;;
+esac
 
 # Extra applications
-APPLIST+=' vim'
-APPLIST+=' neovim'
-APPLIST+=' neofetch'
-APPLIST+=' tmux'
-APPLIST+=' ctags'     # tagging tool, used with vim
-APPLIST+=' doxygen'
-APPLIST+=' graphviz'
-APPLIST+=' speedcrunch' # calculator
+read -n1 -p "Install extras? [y,n] " installdev
+case $installdev in
+    y|Y)
+        APPLIST+=' vim'
+        APPLIST+=' neovim'
+        APPLIST+=' neofetch'
+        APPLIST+=' tmux'
+        APPLIST+=' ctags'     # tagging tool, used with vim
+        APPLIST+=' doxygen'
+        APPLIST+=' graphviz'
+        APPLIST+=' speedcrunch' # calculator
+        echo ' installing extras'
+        ;;
+    n|N) echo ' skip' ;;
+    *)   echo ' skip' ;;
+esac
 
 #echo "Not installing applications..."
 
-#echo "$APPLIST"
+echo "$APPLIST"
 
-sudo pacman -S --needed $APPLIST
+#sudo pacman -S --needed $APPLIST
 
 
 
