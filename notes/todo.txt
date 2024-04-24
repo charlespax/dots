@@ -4,3 +4,5 @@ CONFIGS
 - GTK dark theme
 
 
+See https://www.dwarmstrong.org/sway/
+See https://www.fosskers.ca/en/blog/wayland

@@ -59,6 +59,8 @@ case $installdev in
         APPLIST+=' doxygen'
         APPLIST+=' graphviz'
         APPLIST+=' speedcrunch' # calculator
+        APPLIST+=' acpi'        # battery information
+        APPLIST+=' iwctl'       # WiFi control
         echo ' installing extras'
         ;;
     n|N) echo ' skip' ;;
