@@ -18,3 +18,11 @@ Crtl-[hjkl]  navigation between panes
 
   :vsp <filesname>      open file in a vertical split Ctrl-[hjkl]
   :<num>sp <filename>   open file in horizontal split of NUM lines Ctrl-[hjkl]
+
+=== Search and replace ===
+  :%s/<search term>/<new text>/g      g means global; replace all instances
+  :%s/<search term>/<new text>/gc     c means confirm each replacement
+
+=== Indenting and Folding ===
+  =ap           indent paragraph
+  gg=G          indent whole document

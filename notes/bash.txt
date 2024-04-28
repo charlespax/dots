@@ -33,3 +33,4 @@ Crtl-b w            show list of terminal sessions
 
 === acpi ===
 Tool to display battey information
+
