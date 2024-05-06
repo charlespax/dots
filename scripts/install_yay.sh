@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-# TODO use a temp directory
+THISDIR=$(pwd)
+TEMPDIR=$(mktemp -d)
 
+cd $TEMPDIR
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
+cd $THISDIR
 
