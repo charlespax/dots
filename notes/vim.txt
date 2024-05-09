@@ -1,8 +1,5 @@
 
 
-  *                     highlight all ocurances of word under cursor
-
-  :noh                  remove highlighting
 
 
 === Cursor Movement ===
@@ -26,3 +23,15 @@ Crtl-[hjkl]  navigation between panes
 === Indenting and Folding ===
   =ap           indent paragraph
   gg=G          indent whole document
+
+=== Selecting test ===
+  *                     highlight all ocurances of word under cursor
+  :noh                  remove highlighting
+
+=== Screen Splitting ===
+Ctrl-w v        vertical split
+Ctrl-w s        horizontal split
+Ctrl-w [hjkl]   navigate screens
+Ctrl-w [<>]     increase/decrease screen width
+Ctrl-w [+-]     increase/decrease screen height
+Ctrl-w =        equalize screen heights
