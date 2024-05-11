@@ -7,19 +7,31 @@ APPLIST=''
 # Sway 
 SWAYAPPS=''
 SWAYAPPS+=' brightnessctl' # brightness control
-SWAYAPPS+=' dmenu'
+#SWAYAPPS+=' dmenu'   # application launcher for xorg
 SWAYAPPS+=' foot'     # terminal emulator
-SWAYAPPS+=' grim'
+SWAYAPPS+=' grim'     # screenshot tool
 SWAYAPPS+=' pavucontrol'
-SWAYAPPS+=' polkit'   # TODO what is polkit?
-SWAYAPPS+=' slurp'
+SWAYAPPS+=' polkit'   # system-wide privilege manager
+SWAYAPPS+=' slurp'    # screenshot tool region selector
 SWAYAPPS+=' sway'     # sway desktop
 SWAYAPPS+=' swaybg'   # desktop background image tool
 SWAYAPPS+=' swayidle' # idle manager
 SWAYAPPS+=' swaylock' # screen lock
-SWAYAPPS+=' waybar'   # top bar
-SWAYAPPS+=' wofi'     # TODO application launcher ?
+SWAYAPPS+=' waybar'   # status bar
+SWAYAPPS+=' wofi'     # application launcher
 SWAYAPPS+=' xorg-xwayland'
+# clipboard manager
+# color picker
+# document viewer
+# email client
+# file manager
+# gamma and day/night adjustment
+SWAYAPPS+=' gimp'     # image editor
+# image viewer
+# login manager
+# notification daemon
+# power menu wlogout
+# sc
 
 echo ''
 echo 'Sway apps: ' $SWAYAPPS
