@@ -5,7 +5,7 @@
 OS=$ID
 
 if [ $OS == 'arch' ]; then
-        sudo pacman -S --needed $APPLIST
+        echo Welecome to the app installer!!!
 else
         echo ERROR: this script only works on arch
         exit
