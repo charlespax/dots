@@ -2,14 +2,13 @@
 
 # Get OS information
 . /etc/os-release
-case $ID in
-        arch) echo 'this is ARCH' ;;
-        ubuntu) echo 'this is ubuntu' ;;
-esac
-if [ $ID == 'ubuntu' ]; then
-        echo this IF UBUNTU
-elif [ $ID == 'arch' ]; then
-        echo this is IF ARCH
+OS=$ID
+
+if [ $OS == 'arch' ]; then
+        sudo pacman -S --needed $APPLIST
+else
+        echo ERROR: this script only works on arch
+        exit
 fi
 
 # Applications in the APPLIST are installed on top of
@@ -108,11 +107,9 @@ echo ''
 echo 'Applications to install: ' $APPLIST
 read -p "Continue with installation? [y,n] " choice
 case $choice in
-        y|Y) sudo pacman -S --needed $APPLIST ;;
+        y|Y) echo sudo pacman -S $APPLIST ;;
         n|N) echo 'Exiting installation...' ;;
 esac
-
-
 
 ## SC-IM stuff (vim-like spreadsheets)
 # This is needed to build scim
