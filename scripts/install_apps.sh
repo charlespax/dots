@@ -4,74 +4,89 @@
 # the Arch base install
 APPLIST=''
 
-# Desktop Environment
-read -n1 -p "Install Sway? [y,n] " installsway
-case $installsway in
-        y|Y)
-                APPLIST+=' sway'     # sway desktop
-                APPLIST+=' swaybg'   # desktop background image tool
-                APPLIST+=' swayidle' # idle manager
-                APPLIST+=' swaylock' # screen lock
-                APPLIST+=' foot'     # terminal emulator
-                APPLIST+=' polkit'   # TODO what is polkit?
-                APPLIST+=' wofi'     # TODO application launcher ?
-                echo ' installing Sway' ;;
-        n|N) echo ' skip' ;;
-        *)   echo ' skip' ;;
+# Sway 
+SWAYAPPS=''
+SWAYAPPS+=' brightnessctl' # brightness control
+SWAYAPPS+=' dmenu'
+SWAYAPPS+=' foot'     # terminal emulator
+SWAYAPPS+=' grim'
+SWAYAPPS+=' pavucontrol'
+SWAYAPPS+=' polkit'   # TODO what is polkit?
+SWAYAPPS+=' slurp'
+SWAYAPPS+=' sway'     # sway desktop
+SWAYAPPS+=' swaybg'   # desktop background image tool
+SWAYAPPS+=' swayidle' # idle manager
+SWAYAPPS+=' swaylock' # screen lock
+SWAYAPPS+=' waybar'   # top bar
+SWAYAPPS+=' wofi'     # TODO application launcher ?
+SWAYAPPS+=' xorg-xwayland'
+
+echo ''
+echo 'Sway apps: ' $SWAYAPPS
+read -p 'Install Sway? [y,n] ' choice
+case $choice in
+        y|Y)   APPLIST+=$SWAYAPPS ;;
+        n|N|*) echo ' skiping Sway' ;;
 esac
 
-#APPLIST+=' waybar'   # info bar at top of screen
-
 # Fonts
-read -n1 -p "Install fonts? [y,n] " installdev
-case $installdev in
-        y|Y)
-                APPLIST+=' adobe-source-code-pro-fonts'
-                APPLIST+=' ttf-font-awesome'
-                APPLIST+=' ttf-roboto-mono'
-                echo ' installing fonts'
-                ;;
-        n|N) echo ' skip' ;;
-        *)   echo ' skip' ;;
+FONTS=''
+FONTS+=' adobe-source-code-pro-fonts'
+FONTS+=' ttf-font-awesome'
+FONTS+=' ttf-roboto-mono'
+
+echo ''
+echo 'Fonts: ' $FONTS
+read -p "Install fonts? [y,n] " choice
+case $choice in
+        y|Y)   APPLIST+=$FONTS ;;
+        n|N|*) echo ' skiping fonts' ;;
 esac
 
 # Development Tools
-read -n1 -p "Install dev tools? [y,n] " installdev
-case $installdev in
-        y|Y)
-                APPLIST+=' git'
-                APPLIST+=' base-devel'
-                echo ' installing dev tools'
-                ;;
-        n|N) echo ' skip' ;;
-        *)   echo ' skip' ;;
+DEVTOOLS=''
+DEVTOOLS+=' base-devel'
+DEVTOOLS+=' git'
+DEVTOOLS+=' neovim'
+DEVTOOLS+=' tmux'
+DEVTOOLS+=' vim'
+
+echo ''
+echo 'Dev tools: ' $DEVTOOLS
+read -p "Install dev tools? [y,n] " choice
+case $choice in
+        y|Y)  APPLIST+=$DEVTOOLS ;;
+        n|N|*) echo 'skipping dev tools' ;;
 esac
 
 # Extra applications
-read -n1 -p "Install extras? [y,n] " installdev
-case $installdev in
-        y|Y)
-                APPLIST+=' vim'
-                APPLIST+=' neovim'
-                APPLIST+=' neofetch'
-                APPLIST+=' tmux'
-                APPLIST+=' ctags'     # tagging tool, used with vim
-                APPLIST+=' doxygen'
-                APPLIST+=' graphviz'
-                APPLIST+=' speedcrunch' # calculator
-                APPLIST+=' acpi'        # battery information
-                APPLIST+=' iwctl'       # WiFi control
-                echo ' installing extras'
-                ;;
-        n|N) echo ' skip' ;;
-        *)   echo ' skip' ;;
+EXTRAS=''
+EXTRAS+=' acpi'        # battery information
+EXTRAS+=' ctags'     # tagging tool, used with vim
+EXTRAS+=' doxygen'
+EXTRAS+=' firefox'
+EXTRAS+=' graphviz'
+EXTRAS+=' iwctl'       # WiFi control
+EXTRAS+=' neofetch'
+EXTRAS+=' speedcrunch' # calculator
+EXTRAS+=' w3m'
+
+echo ''
+echo 'Extras: ' $EXTRAS
+read -p "Install extras? [y,n] " choice
+case $choice in
+        y|Y)   APPLIST+=$EXTRAS ;;
+        n|N|*) echo 'Skipping extras' ;;
 esac
 
-#echo "Not installing applications..."
-
-echo "$APPLIST"
-
-#sudo pacman -S --needed $APPLIST
+# Confirm installation
+echo ''
+echo 'Applications to install: ' $APPLIST
+read -p "Continue with installation? [y,n] " choice
+case $choice in
+        y|Y) sudo pacman -S --needed $APPLIST ;;
+        n|N) echo 'Exiting installation...' ;;
+esac
 
 
 
