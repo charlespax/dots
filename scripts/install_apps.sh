@@ -107,7 +107,7 @@ echo ''
 echo 'Applications to install: ' $APPLIST
 read -p "Continue with installation? [y,n] " choice
 case $choice in
-        y|Y) echo sudo pacman -S $APPLIST ;;
+        y|Y) sudo pacman -S $APPLIST ;;
         n|N) echo 'Exiting installation...' ;;
 esac
 
