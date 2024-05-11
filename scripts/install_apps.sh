@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# get OS information
+. /etc/os-release
+case $ID in
+        arch) echo 'this is ARCH' ;;
+        ubuntu) echo 'this is ubuntu' ;;
+esac
+
 # Applications in the APPLIST are installed on top of
 # the Arch base install
 APPLIST=''
