@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-# get OS information
+# Get OS information
 . /etc/os-release
 case $ID in
         arch) echo 'this is ARCH' ;;
         ubuntu) echo 'this is ubuntu' ;;
 esac
+if [ $ID == 'ubuntu' ]; then
+        echo this IF UBUNTU
+elif [ $ID == 'arch' ]; then
+        echo this is IF ARCH
+fi
 
 # Applications in the APPLIST are installed on top of
 # the Arch base install
