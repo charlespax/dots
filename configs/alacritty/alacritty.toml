@@ -1,9 +1,0 @@
-# Reloac configuration file changes immeditely
-live_config_reload = true
-
-# Themes are cloned from the github repository
-# into ~/.config/alacritty/themes
-# https://github.com/alacritty/alacritty-theme
-import = [
-    "~/.config/alacritty/themes/themes/alabaster_dark.toml"
-]

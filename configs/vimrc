@@ -9,7 +9,7 @@ set nocompatible
 map <F2> <Esc>:w<CR>:!%:p:S<CR>
 set visualbell
 set number " enable line numbers
-" set relativenumber
+set relativenumber
 
 " Displays a horizontal line at the cursor 
 set cursorline
