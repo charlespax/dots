@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# Get OS information
+. /etc/os-release
+OS=$ID
+
+if [ $OS == 'arch' ]; then
+        echo Welecome to the app installer!!!
+else
+        echo ERROR: this script only works on arch
+        exit
+fi
+
 # Applications in the APPLIST are installed on top of
 # the Arch base install
 APPLIST=''
@@ -99,8 +110,6 @@ case $choice in
         y|Y) sudo pacman -S --needed $APPLIST ;;
         n|N) echo 'Exiting installation...' ;;
 esac
-
-
 
 ## SC-IM stuff (vim-like spreadsheets)
 # This is needed to build scim

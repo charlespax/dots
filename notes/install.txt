@@ -24,8 +24,8 @@ Important configuration notes:
     Profile: Minimal
     Audio: Pipewire                                *******************
     Additional packages: iwd         <------------ * SUPER IMPOTRANT *
-    Network configuration: Copy ISO...
-                                                   *******************
+    Network configuration: Copy ISO...             *******************
+
 Reboot system.
 
 

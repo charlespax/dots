@@ -3,7 +3,10 @@
 See https://bbs.archlinux.org/viewtopic.php?id=254539
 
 Create this script:
-	#!/bin/sh
+	#!/user/bin/env bash
+
+        #CONFIG="${HOME}/.config/path/to/profile"
+
 	/usr/bin/firefox --profile \
 	"${HOME}/.config/path/to/profile" "$@"
 
