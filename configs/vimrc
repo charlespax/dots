@@ -1,5 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Personal
+"
+" NOTE: See the end of this document for highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command Hello echo "Hello, world!"
 
@@ -15,6 +17,10 @@ set relativenumber
 set cursorline
 highlight CursorLine ctermbg=234
 "highlight Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+
+" Display a vertical lin at the cursor
+set cursorcolumn
+highlight CursorColumn ctermbg=234
 
 " set color column
 set colorcolumn=80
@@ -261,10 +267,10 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
-        map <c-space> ?
+map <c-space> ?
 
-        " Disable highlight when <leader><cr> is pressed
-        map <silent> <leader><cr> :noh<cr>
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -471,3 +477,4 @@ endfunction
 
 highlight ColorColumn ctermbg=234
 highlight CursorLine ctermbg=234
+highlight CursorColumn ctermbg=234
