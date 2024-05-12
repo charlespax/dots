@@ -6,7 +6,7 @@
 
 ### start of my personal settings ###
 
-font pango: SourceCodePro Medium 10
+font pango: SourceCodePro Medium 12
 
 gaps inner 2px
 gaps outer 2px
