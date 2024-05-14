@@ -1,4 +1,4 @@
-require("charles.remap")
+require("personal.remap")
 
 -- Line Numbers
 vim.opt.number = true
@@ -10,65 +10,3 @@ vim.opt.scrolloff = 999
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.colorcolumn = "80"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
