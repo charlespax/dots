@@ -1,24 +1,24 @@
 require("personal.remap")
 
--- Line Numbers
+-- [[ Line Numbers ]]
 -------------------------------------------------------------------------------
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Cursor Properties
+-- [[ Cursor Properties ]]
 -------------------------------------------------------------------------------
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 999
 
--- Tabs
+-- [[ Tabs ]]
 -------------------------------------------------------------------------------
 vim.opt.expandtab = true  -- convert tabs into spaces
 --vim.opt.shiftwidth = 8
 --vim.opt.tabstop = 8
 
--- Colors
+-- [[ Colors ]]
 -------------------------------------------------------------------------------
 --vim.opt.termguicolors = true
 termguicolors = true
@@ -30,7 +30,19 @@ vim.cmd 'colorscheme habamax'
 --vim.cmd 'colorscheme pablo'
 --vim.cmd 'colorscheme slate'
 
--- Other UI stuff
+-- [[ Other UI stuff ]]
 -------------------------------------------------------------------------------
 -- vim.opt.cmdheight = 2
 vim.opt.foldcolumn = "1"
+
+
+-- [[ Auto Commands ]]
+vim.api.nvim_create_autocmd('TextYankPost', {
+        desc = 'Highlight when yanking (copying) text',
+        group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+        callback = function()
+                vim.highlight.on_yank()
+        end,
+})
+
+
