@@ -1,6 +1,19 @@
-# TODO
-# - Increase .bash_history size
+# .bashrc
+#   - executed for non-interactive shell sessions
+#   - commands that should run each time a new shell is launched
+#   - alias, functions, custom prompts, history customications
 #
+# .bash_profile
+#   - executed for interactive shell sessions
+#   - commands that should be run only once
+#   - $PATH environment variables
+#   - sources .bashrc
+#
+
+# Source .bashrc
+#if [ -f ~/.bashrc ]; then
+#    . ~/.bashrc
+#fi
 
 #=================#
 # Command aliases #

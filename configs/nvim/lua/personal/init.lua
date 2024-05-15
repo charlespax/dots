@@ -21,11 +21,14 @@ vim.opt.expandtab = true  -- convert tabs into spaces
 -- Colors
 -------------------------------------------------------------------------------
 --vim.opt.termguicolors = true
---vim.cmd 'colorscheme zaibatsu'
+termguicolors = true
 vim.cmd 'highlight ColorColumn ctermbg=234'
 vim.cmd 'highlight CursorLine ctermbg=234'
 vim.cmd 'highlight CursorColumn ctermbg=234'
---vim.cmd 'colorscheme torte'
+vim.cmd 'colorscheme habamax'
+--vim.cmd 'colorscheme lunaperche'
+--vim.cmd 'colorscheme pablo'
+--vim.cmd 'colorscheme slate'
 
 -- Other UI stuff
 -------------------------------------------------------------------------------
