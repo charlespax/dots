@@ -200,7 +200,7 @@ set foldcolumn=1
 syntax enable 
 
 try
-        colorscheme torte
+        colorscheme lunaperche
 " colorscheme zaibatsu
 catch
 endtry

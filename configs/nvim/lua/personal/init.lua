@@ -25,9 +25,8 @@ termguicolors = true
 vim.cmd 'highlight ColorColumn ctermbg=234'
 vim.cmd 'highlight CursorLine ctermbg=234'
 vim.cmd 'highlight CursorColumn ctermbg=234'
-vim.cmd 'colorscheme habamax'
---vim.cmd 'colorscheme lunaperche'
---vim.cmd 'colorscheme pablo'
+--vim.cmd 'colorscheme habamax'
+vim.cmd 'colorscheme lunaperche'
 --vim.cmd 'colorscheme slate'
 
 -- [[ Other UI stuff ]]
