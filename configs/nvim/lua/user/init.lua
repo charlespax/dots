@@ -1,4 +1,4 @@
-require("personal.remap")
+require("user.remap")
 
 -- [[ Line Numbers ]] ---------------------------------------------------------
 vim.opt.number = true
