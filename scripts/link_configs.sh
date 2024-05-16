@@ -12,6 +12,7 @@ ln -i -s $PWD/../configs/.moc ~/ # moc terminal music player
 ln -i -s $PWD/../configs/neofetch ~/.config/
 ln -i -s $PWD/../configs/nvim ~/.config/  # neovim
 ln -i -s $PWD/../configs/scimrc ~/.scimrc  # scim spreadsheets
-#ln -i -s $PWD/../configs/sway ~/.config/
+ln -i -s $PWD/../configs/sway ~/.config/
 ln -i -s $PWD/../configs/vimrc ~/.vimrc
+ln -i -s $PWD/../configs/zshrc ~/.zshrc
 #waybar
