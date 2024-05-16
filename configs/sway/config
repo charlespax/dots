@@ -1,34 +1,24 @@
 # Styles
-#set $theme /usr/share/themes/yaru-sway
-set $theme collection/usr.share.themes/yaru-sway
+set $theme themes/yaru-sway
 
 # theme variables
 include $theme/variables
 
-#include /etc/sway/outputs/*.conf
-include collection/etc.sway/outputs/*.conf
-#include /etc/sway/inputs/*.conf
-include collection/etc.sway/inputs/*.conf
-
 # Global variables
-#include /etc/sway/variables
-include collection/etc.sway/variables
+include variables
 
 # include modes
-#include /etc/sway/modes/*.conf
-include collection/etc.sway/modes/*.conf
-
-# Additional configs
-#include /etc/sway/config.d/*.conf
-include collection/etc.sway/config.d/*.conf
+include modes/*.conf
 
 # User config
-include $HOME/.config/sway/config.d/*.conf
+include config.d/*.conf
 
 # Include nwg-displays config's (if exists)
-include ~/.config/sway/outputs
-include ~/.config/sway/workspaces
+include outputs/*.conf
+include inputs/*.conf
+
+#include ~/.config/sway/workspaces
 
 # User variables
-include $HOME/.config/sway/variables.d/*.conf
+include variables.d/*.conf
 
