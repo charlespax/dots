@@ -16,9 +16,3 @@ include config.d/*.conf
 # Include nwg-displays config's (if exists)
 include outputs/*.conf
 include inputs/*.conf
-
-#include ~/.config/sway/workspaces
-
-# User variables
-include variables.d/*.conf
-
