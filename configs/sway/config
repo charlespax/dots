@@ -146,7 +146,13 @@ set $swappy_notify '[ -x "$(command -v swappy)" ] && /usr/share/sway/scripts/scr
 include modes/*.conf
 
 # User config
-include config.d/*.conf
+include 10-systemd-cgroups.conf
+include 10-systemd-session.conf
+include 30-applications-defaults.conf
+include 40-autostart-applications.conf
+include 50-systemd-user.conf
+include 95-xdg-desktop-autostart.conf
+
 
 # Include nwg-displays config's (if exists)
 include io.conf
