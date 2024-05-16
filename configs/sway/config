@@ -14,5 +14,19 @@ include modes/*.conf
 include config.d/*.conf
 
 # Include nwg-displays config's (if exists)
-include outputs/*.conf
-include inputs/*.conf
+include io.conf
+
+font pango: SourceCodePro Medium 12
+gaps inner 2px
+gaps outer 2px
+
+# This works for the ThinkPad TrackPoint
+input "type:pointer" accel_profile flat
+
+input type:touchpad {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+

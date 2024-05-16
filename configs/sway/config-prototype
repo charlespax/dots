@@ -6,20 +6,20 @@
 
 ### start of my personal settings ###
 
-font pango: SourceCodePro Medium 12
+#font pango: SourceCodePro Medium 12
 
-gaps inner 2px
-gaps outer 2px
+#gaps inner 2px
+#gaps outer 2px
 
 # This works for the ThinkPad TrackPoint
-input "type:pointer" accel_profile flat
-
-input type:touchpad {
-       dwt enabled
-       tap enabled
-       natural_scroll enabled
-       middle_emulation enabled
-   }
+#input "type:pointer" accel_profile flat
+#
+#input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
 
 ### end of personal settings ###
 
@@ -37,7 +37,7 @@ input type:touchpad {
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show run
+#set $menu wofi --show run
 
 ### Output configuration
 #
