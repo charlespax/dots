@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO investigate why ubuntu sway calls libexec scipts in
+#      systemd-cgroups.conf etc.
 # Get OS information
 . /etc/os-release
 OS=$ID

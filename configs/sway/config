@@ -1,19 +1,24 @@
-# Styles
-set $theme themes/yaru-sway
+# flock wrapper for running only one process
+# TODO determine purpose of script 
+#set $flock /usr/share/sway/scripts/flock.sh
+set $flock scripts/flock.sh
 
-# theme variables
+# TODO what does this do?
+# Add --to-code to bindsym, support for non-latin layouts
+set $bindsym bindsym --to-code
+
+##
+## Theme
+##
+
+set $theme themes/yaru-sway
 include $theme/variables
 
+##
+## Keymap
+##
 
-# Global variables
-#include variables
-
-
-
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+# Mod key (1: Alt, 4: Super)
 set $mod Mod1
 
 # Home row direction keys, like vim
@@ -22,42 +27,80 @@ set $down j
 set $up k
 set $right l
 
-# flock wrapper for running only one process
-set $flock /usr/share/sway/scripts/flock.sh
+##
+## Terminal Emulator
+##
 
-# Your preferred terminal emulator
 set $term foot
-set $term_cwd $term -D "$(/usr/share/sway/scripts/swaycwd.sh 2>/dev/null || echo $HOME)"
+#set $term_cwd $term -D "$(/usr/share/sway/scripts/swaycwd.sh 2>/dev/null || echo $HOME)"
+set $term_cwd $term -D "$(scripts/swaycwd.sh 2>/dev/null || echo $HOME)"
 set $term_float footclient -a floating_shell
 
+##
+## Application Launcher
+##
+
 # rofi theme
-set $rofi_theme "* {lightbg: $background-color; background: $background-color; lightfg: $accent-color; foreground: $text-color; border-color: $accent-color;} window {border: 2;}"
+set $rofi_theme "* { \
+        lightbg: $background-color; \
+        background: $background-color; \
+        lightfg: $accent-color; \
+        foreground: $text-color; \
+        border-color: $accent-color; \
+} window {border: 2;}"
 
-# Your preferred application launcher
-set $menu rofi -show combi -combi-modi "drun,run" -terminal $term -ssh-command "{terminal} {ssh-client} {host} [-p {port}]" -run-shell-command "{terminal} {cmd}" -show-icons -font "$gui-font"
+# rofi config
+set $menu rofi \
+        -show combi \
+        -combi-modi "drun,run" \
+        -terminal $term \
+        -ssh-command "{terminal} {ssh-client} {host} [-p {port}]" \
+        -run-shell-command "{terminal} {cmd}" \
+        -show-icons \
+        -font "$gui-font"
 
-# Add --to-code to bindsym, support for non-latin layouts
-set $bindsym bindsym --to-code
+## 
+## Volume
+##
 
 # Volume notification
-set $volume_bar /usr/share/sway/scripts/volume-notify.sh
-
-# Brightness notification
-set $brightness_bar /usr/share/sway/scripts/brightness-notify.sh
-
-# brightness control
-set $brightness_step bash -c 'echo $(( $(light -Mr) / 100 * 5 < 1 ? 1 : $(( $(light -Mr) / 100 * 5 )) ))'
-set $brightness_up light -r -A $($brightness_step) && $brightness_bar
-set $brightness_down light -r -U $($brightness_step) && $brightness_bar
+#set $volume_bar /usr/share/sway/scripts/volume-notify.sh
+set $volume_bar scripts/volume-notify.sh
 
 # Volume control
 set $volume_down pulsemixer --change-volume -5 && $volume_bar
 set $volume_up pulsemixer --change-volume +5 && $volume_bar
 set $volume_mute pulsemixer --toggle-mute && $volume_bar
 
+##
+## Brightness 
+##
+
+# Brightness notification
+#set $brightness_bar /usr/share/sway/scripts/brightness-notify.sh
+set $brightness_bar scripts/brightness-notify.sh
+
+# brightness control
+set $brightness_step bash -c 'echo $(( $(light -Mr) / 100 * 5 < 1 ? 1 : $(( $(light -Mr) / 100 * 5 )) ))'
+set $brightness_up light -r -A $($brightness_step) && $brightness_bar
+set $brightness_down light -r -U $($brightness_step) && $brightness_bar
+
+##
+## Clipboard
+##
+
 # clipboard history
-set $clipboard cliphist list | rofi -dmenu -font "$gui-font" -p "Select item to copy" -lines 10 -width 35 | cliphist decode | wl-copy
-set $clipboard-del cliphist list | rofi -dmenu -font "$gui-font" -p "Select item to delete" -lines 10 -width 35 | cliphist delete
+set $clipboard \
+        cliphist list | \
+        rofi -dmenu -font "$gui-font" \
+                -p "Select item to copy" -lines 10 -width 35 | \
+        cliphist decode | \
+        wl-copy
+set $clipboard-del \
+        cliphist list | \
+        rofi -dmenu -font "$gui-font" \
+                -p "Select item to delete" -lines 10 -width 35 | \
+        cliphist delete
 
 # bluetooth menu
 set $bluetooth $flock $term_float bluetuith
@@ -69,10 +112,14 @@ set $pulseaudio $term_float pulsemixer
 set $calendar $term_float calcurse
 
 # help overlay
-set $help_menu '[ -x "$(command -v nwg-wrapper)" ] && [ -f $HOME/.config/nwg-wrapper/help.sh ] && /usr/share/sway/scripts/help.sh'
+set $help_menu '[ -x "$(command -v nwg-wrapper)" ] && \
+        [ -f $HOME/.config/nwg-wrapper/help.sh ] && \
+        scripts/help.sh'
+#        /usr/share/sway/scripts/help.sh'
 
 # help overlay command
-set $help /usr/share/sway/scripts/help.sh --toggle
+#set $help /usr/share/sway/scripts/help.sh --toggle
+set $help scripts/help.sh --toggle
 
 # workspace names
 set $ws1 number 1
@@ -102,16 +149,26 @@ set $screenshot_active $pipe_active | $swappy && $notify_paste
 set $polkit_agent /usr/bin/mate-polkit &
 
 # Night color
-set $wlsunset '[ -x "$(command -v wlsunset)" ] && /usr/share/sway/scripts/sunset.sh "on"'
+set $wlsunset '[ -x "$(command -v wlsunset)" ] && \
+        scripts/sunset.sh "on"'
+        #/usr/share/sway/scripts/sunset.sh "on"'
 
 # Autotiling script
 set $autotiling '[ -x "$(command -v autotiling)" ] && autotiling -w 1 3 5 7 9'
 
 # switch between top-level containers (windows) in a workspace
-set $switch_toplevel '[ -f /usr/share/sway/scripts/switch-top-level.py ] && /usr/share/sway/scripts/switch-top-level.py'
+set $switch_toplevel '[ \
+        -f scripts/switch-top-level.py ] && \
+        scripts/switch-top-level.py'
+       # -f /usr/share/sway/scripts/switch-top-level.py ] && \
+       # /usr/share/sway/scripts/switch-top-level.py'
 
 # Automatic workspace names
-set $autoname_workspaces '[ -f /usr/share/sway/scripts/autoname-workspaces.py ] && /usr/share/sway/scripts/autoname-workspaces.py'
+set $autoname_workspaces '[ \
+        -f scripts/autoname-workspaces.py ] && \
+        scripts/autoname-workspaces.py'
+        #-f /usr/share/sway/scripts/autoname-workspaces.py ] && \
+        #/usr/share/sway/scripts/autoname-workspaces.py'
 
 # restart kanshi https://github.com/emersion/kanshi/issues/43#issuecomment-531679213
 set $kanshi '[ -x "$(command -v kanshi)" ] && pkill kanshi; exec kanshi'
@@ -120,27 +177,33 @@ set $kanshi '[ -x "$(command -v kanshi)" ] && pkill kanshi; exec kanshi'
 set $pcmanfm_daemon '[ -x "$(command -v pcmanfm)" ] && pcmanfm -d'
 
 # Clipboard manager
-set $cliphist_store '[ -x "$(command -v wl-paste)" ] && [ -x "$(command -v cliphist)" ] && wl-paste --watch cliphist store'
-set $cliphist_watch '[ -x "$(command -v wl-paste)" ] && [ -x "$(command -v cliphist)" ] && wl-paste --watch pkill -RTMIN+9 waybar'
+set $cliphist_store '[ -x "$(command -v wl-paste)" ] && \
+        [ -x "$(command -v cliphist)" ] && \
+        wl-paste --watch cliphist store'
+set $cliphist_watch '[ -x "$(command -v wl-paste)" ] \
+        && [ -x "$(command -v cliphist)" ] \
+        && wl-paste --watch pkill -RTMIN+9 waybar'
 
 # Start nwg-drawer as a daemon
 set $nwg_drawer_daemon '[ -x "$(command -v nwg-drawer)" ] && nwg-drawer -r'
 
 # Start playerctl as daemon
-set $watch_playerctl '[ -x "$(command -v playerctl)" ] && pkill playerctl; playerctl -a metadata --format \'{{status}} {{title}}\' --follow | while read line; do pkill -RTMIN+5 waybar; done'
+set $watch_playerctl '[ -x "$(command -v playerctl)" ] && \
+        pkill playerctl; \
+        playerctl -a metadata --format \'{{status}} {{title}}\' --follow | \
+        while read line; do pkill -RTMIN+5 waybar; done'
 
 # Update Rofi theme based on $rofi_theme colors
-set $update_rofi_theme mkdir -p $HOME/.config/rofi/ && echo $rofi_theme > $HOME/.config/rofi/config.rasi
+set $update_rofi_theme mkdir -p $HOME/.config/rofi/ && \
+        echo $rofi_theme > $HOME/.config/rofi/config.rasi
 
 # Start Calcurse calendar as a daemon
 set $calendar_daemon 'calcurse --daemon'
 
 # Notifications from Swappy
-set $swappy_notify '[ -x "$(command -v swappy)" ] && /usr/share/sway/scripts/screenshot-notify.sh'
-
-
-
-
+set $swappy_notify '[ -x "$(command -v swappy)" ] && \
+        scripts/screenshot-notify.sh'
+        #/usr/share/sway/scripts/screenshot-notify.sh'
 
 # include modes
 include modes/*.conf
