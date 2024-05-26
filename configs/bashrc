@@ -3,8 +3,13 @@
 #
 
 #=================#
+# Key bindings    #
+#=================#
+bind -x '"\C-f":"tmux-sessionizer"' # tmux-sessionizer
+
+#=================#
 # Command aliases #
-# ================#
+#=================#
 
 # Command: lz
 # Description: run lazygit
@@ -108,3 +113,4 @@ export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/opt/l
 export GOPATH=~/gocode
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/charles/.platformio/penv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/charles/.platformio/packages/tool-openocd-gd32v/bin:/home/charles/.platformio/penv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/charles/.platformio/penv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/charles/.platformio/packages/tool-openocd-gd32v/bin
+export PATH=$PATH:$HOME/.local/scripts/
