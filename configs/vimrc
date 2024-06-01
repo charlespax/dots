@@ -1,13 +1,9 @@
-" TODO format comments such that I can grep out all the commands that I would
-" need to know. Documentation comments should be on their own line and all
-" share the same tag. e.g. <leader>l toggles 'list', <leader>s toggles
-" scrolloff, <leader>r toggles relative line numbers. Maybe even make this a
-" command I can execute from within vim; it would be like a help menue.
+" TODO Maybe even make this a command I can execute from within vim; it would be like a help menue. VIMDOC
 " <leader>? to show the list?
 "
-" DOCTAG                       My vim Configuration
-" DOCTAG                     ========================
-" DOCTAG
+" VIMDOC                       My vim Configuration
+" VIMDOC                     ========================
+" VIMDOC
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Ag searching and cope displaying
@@ -44,8 +40,8 @@
 "nmap j gj
 "nmap k gk
 
-" DOCTAG
-" DOCTAG  General Behavior
+" VIMDOC
+" VIMDOC  General Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible             " vi compatability
 "
@@ -59,16 +55,16 @@ set nobackup                 " backup before overwrite
 set nowritebackup            " backup before overwrite, remove backup
 set noswapfile               " wire buffer to a swapfile
 "
-" DOCTAG                     <leader> is <SPACE> (do not remap this key)
+" VIMDOC                     <leader> is <SPACE> (do not remap this key)
 let mapleader=" "
 nnoremap <SPACE> <Nop>
 
-" DOCTAG
-" DOCTAG User Interface
+" VIMDOC
+" VIMDOC User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                   " show line numbers
 set relativenumber           " line numbers are relative to cursor
-" DOCTAG <leader>r           toggle relative line numers
+" VIMDOC <leader>r           toggle relative line numers
 nmap <leader>r :set relativenumber!<cr>
 "
 set foldcolumn=1             " add column to indicate folded code
@@ -82,7 +78,7 @@ highlight CursorColumn ctermbg=234
 set colorcolumn=80           " vertical line at column n
 highlight ColorColumn ctermbg=234
 "
-" DOCTAG <leader>s           toggle scrolloff
+" VIMDOC <leader>s           toggle scrolloff
 :nnoremap <Leader>s :let &scrolloff=999-&scrolloff<CR>
 set scrolloff=999           " page scrolls to keep n lines around cursor
 "
@@ -93,11 +89,11 @@ syntax enable                " syntax highlighting
 "
 set laststatus=2             " Always show the status line
 "
-" DOCTAG <leader><enter>     disable highlighting
+" VIMDOC <leader><enter>     disable highlighting
 map <silent> <leader><cr> :nohlsearch<cr>
 
-" DOCTAG
-" DOCTAG Search
+" VIMDOC
+" VIMDOC Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                 " highlight search results
 set incsearch                " highlight search results as you type
@@ -107,36 +103,37 @@ set smartcase                " override ignorecase term has uppercase
 "
 set magic " needed for regex
 "
-" DOCTAG *                   searches for the current selection (visual mode)
+" VIMDOC *                   searches for the current selection (visual mode)
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-" DOCTAG #                   searches for the current selection (visual mode)
+" VIMDOC #                   searches for the current selection (visual mode)
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 "
-"function! VisualSelection(direction, extra_filter) range
-"        let l:saved_reg = @"
-"        execute "normal! vgvy"
-"
-"        let l:pattern = escape(@", '\\/.*$^~[]')
-"        let l:pattern = substitute(l:pattern, "\n$", "", "")
-"
-"        if a:direction == 'gv'
-"                call CmdLine("Ag \"" . l:pattern . "\" " )
-"        elseif a:direction == 'replace'
-"                call CmdLine("%s" . '/'. l:pattern . '/')
-"        endif
-"
-"        let @/ = l:pattern
-"        let @" = l:saved_reg
-"endfunction
+" regex stuff ??? TODO understand this
+function! VisualSelection(direction, extra_filter) range
+        let l:saved_reg = @"
+        execute "normal! vgvy"
 
-" DOCTAG
-" DOCTAG Text Behavior
+        let l:pattern = escape(@", '\\/.*$^~[]')
+        let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+        if a:direction == 'gv'
+                call CmdLine("Ag \"" . l:pattern . "\" " )
+        elseif a:direction == 'replace'
+                call CmdLine("%s" . '/'. l:pattern . '/')
+        endif
+
+        let @/ = l:pattern
+        let @" = l:saved_reg
+endfunction
+
+" VIMDOC
+" VIMDOC Text Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab                 " treat groups of spaces as tabs
 "
 set list                     " show unprintable characters described below
 set listchars=tab:⍿·,trail:X,eol:¬
-" DOCTAG <leader>l           toggle display of unprintable charachters
+" VIMDOC <leader>l           toggle display of unprintable charachters
 nmap <leader>l :set list!<cr>
 "
 set autoindent               " current indent copied to new line
@@ -161,18 +158,18 @@ filetype on                  " filetype detection
 filetype plugin on           " filetype plugins
 filetype indent on           " indentation plugins
 
-" DOCTAG
-" DOCTAG File Handling 
+" VIMDOC
+" VIMDOC File Handling 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread                 " reload file if externally edited
 "
 " when opening a file, move cursor to the most recent position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "
-" DOCTAG <leader>w           write file
+" VIMDOC <leader>w           write file
 nmap <leader>w :w!<cr>
 "
-" DOCTAG :W                  write file with sudo premissions
+" VIMDOC :W                  write file with sudo premissions
 command W w !sudo tee % > /dev/null
 "
 " when writing a file, delete trailing wite space
@@ -184,24 +181,24 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "
-" DOCTAG <F2>                Save and run opened file
+" VIMDOC <F2>                Save and run opened file
 " :S escapes spaces in the execution path
 map <F2> <Esc>:w<CR>:!%:p:S<CR>
 
-" DOCTAG
-" DOCTAG Helpers
+" VIMDOC
+" VIMDOC Helpers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " help opens in a new tab
 cabbrev help tab help
 
-" DOCTAG
-" DOCTAG Commands
+" VIMDOC
+" VIMDOC Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DOCTAG Hello               print "Hello, world!"
+" VIMDOC Hello               print "Hello, world!"
 command Hello echo "Hello, world!"
 
-" DOCTAG
-" DOCTAG Movement
+" VIMDOC
+" VIMDOC Movement
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " select window
 map <C-j> <C-W>j
@@ -209,29 +206,29 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 "
-" DOCTAG 0                   move cursor to first non-blank character
+" VIMDOC 0                   move cursor to first non-blank character
 map 0 ^
 
-" DOCTAG
-" DOCTAG Spell Checking
+" VIMDOC
+" VIMDOC Spell Checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DOCTAG <leader>ss          toggle spell checking
+" VIMDOC <leader>ss          toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 "
-" DOCTAG <leader>sn          move to the next misspelled word
+" VIMDOC <leader>sn          move to the next misspelled word
 map <leader>sn ]s
-" DOCTAG <leader>sp          move to the previous misspelled word
+" VIMDOC <leader>sp          move to the previous misspelled word
 map <leader>sp [s
 "
-" DOCTAG <leader>sa          permanently mark word as correct
+" VIMDOC <leader>sa          permanently mark word as correct
 map <leader>sa zg
 "
-" DOCTAG <leader>s?          give spelling suggestions
+" VIMDOC <leader>s?          give spelling suggestions
 map <leader>s? z=
 
-" DOCTAG
-" DOCTAG Other
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIMDOC
+" VIMDOC Other
+
 "" Opens a new tab with the current buffer's path
 "" Super useful when editing files in the same directory
 "map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -239,6 +236,6 @@ map <leader>s? z=
 "" Switch CWD to the directory of the open buffer
 "map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" DOCTAG <leader>cc          open a window with the current list of errors
+" VIMDOC <leader>cc          open a window with the current list of errors
 map <leader>cc :botright cope<cr>
 
