@@ -90,7 +90,9 @@ highlight ColorColumn ctermbg=234
 "
 " VIMDOC <leader>s           toggle scrolloff
 :nnoremap <Leader>s :let &scrolloff=999-&scrolloff<CR>
-set scrolloff=999           " page scrolls to keep n lines around cursor
+set scrolloff=999            " page scrolls to keep n lines around cursor
+"
+set termguicolors            " use 24-bit colors (consistent across terms)
 "
 colorscheme lunaperche       " default is lunaperche
 set background=dark          " dark background
