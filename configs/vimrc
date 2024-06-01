@@ -1,7 +1,13 @@
 " TODO format comments such that I can grep out all the commands that I would
 " need to know. Documentation comments should be on their own line and all
 " share the same tag. e.g. <leader>l toggles 'list', <leader>s toggles
-" scrolloff, <leader>r toggles relative line numbers
+" scrolloff, <leader>r toggles relative line numbers. Maybe even make this a
+" command I can execute from within vim; it would be like a help menue.
+" <leader>? to show the list?
+"
+" DOCTAG                       My vim Configuration
+" DOCTAG                     ========================
+" DOCTAG
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Ag searching and cope displaying
@@ -27,7 +33,7 @@
 "" To go to the previous search results do:
 ""   <leader>p
 ""
-
+"
 "map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 "map <leader>n :cn<cr>
 "map <leader>p :cp<cr>
@@ -38,7 +44,8 @@
 "nmap j gj
 "nmap k gk
 
-" General Behavior
+" DOCTAG
+" DOCTAG  General Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible             " vi compatability
 "
@@ -52,15 +59,16 @@ set nobackup                 " backup before overwrite
 set nowritebackup            " backup before overwrite, remove backup
 set noswapfile               " wire buffer to a swapfile
 "
-" <leader> is <SPACE> (do not remap this key)
+" DOCTAG                     <leader> is <SPACE> (do not remap this key)
 let mapleader=" "
 nnoremap <SPACE> <Nop>
 
-" User Interface
+" DOCTAG
+" DOCTAG User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                   " show line numbers
 set relativenumber           " line numbers are relative to cursor
-" toggle relative line numers
+" DOCTAG <leader>r           toggle relative line numers
 nmap <leader>r :set relativenumber!<cr>
 "
 set foldcolumn=1             " add column to indicate folded code
@@ -74,7 +82,7 @@ highlight CursorColumn ctermbg=234
 set colorcolumn=80           " vertical line at column n
 highlight ColorColumn ctermbg=234
 "
-" toggle scrolloff
+" DOCTAG <leader>s           toggle scrolloff
 :nnoremap <Leader>s :let &scrolloff=999-&scrolloff<CR>
 set scrolloff=999           " page scrolls to keep n lines around cursor
 "
@@ -85,10 +93,11 @@ syntax enable                " syntax highlighting
 "
 set laststatus=2             " Always show the status line
 "
-" disable highlighting
+" DOCTAG <leader><enter>     disable highlighting
 map <silent> <leader><cr> :nohlsearch<cr>
 
-" Search
+" DOCTAG
+" DOCTAG Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                 " highlight search results
 set incsearch                " highlight search results as you type
@@ -98,8 +107,9 @@ set smartcase                " override ignorecase term has uppercase
 "
 set magic " needed for regex
 "
-" pressing * or # searches for the current selection (visual mode)
+" DOCTAG *                   searches for the current selection (visual mode)
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+" DOCTAG #                   searches for the current selection (visual mode)
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 "
 "function! VisualSelection(direction, extra_filter) range
@@ -119,13 +129,14 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 "        let @" = l:saved_reg
 "endfunction
 
-" Text Behavior
+" DOCTAG
+" DOCTAG Text Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab                 " treat groups of spaces as tabs
 "
 set list                     " show unprintable characters described below
 set listchars=tab:⍿·,trail:X,eol:¬
-" toggle display of unprintable characters
+" DOCTAG <leader>l           toggle display of unprintable charachters
 nmap <leader>l :set list!<cr>
 "
 set autoindent               " current indent copied to new line
@@ -150,17 +161,18 @@ filetype on                  " filetype detection
 filetype plugin on           " filetype plugins
 filetype indent on           " indentation plugins
 
-" File handling 
+" DOCTAG
+" DOCTAG File Handling 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread                 " reload file if externally edited
 "
 " when opening a file, move cursor to the most recent position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "
-" write file
+" DOCTAG <leader>w           write file
 nmap <leader>w :w!<cr>
 "
-" write file with sudo premissions
+" DOCTAG :W                  write file with sudo premissions
 command W w !sudo tee % > /dev/null
 "
 " when writing a file, delete trailing wite space
@@ -171,25 +183,25 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-" Save and run opened file
+"
+" DOCTAG <F2>                Save and run opened file
 " :S escapes spaces in the execution path
 map <F2> <Esc>:w<CR>:!%:p:S<CR>
 
-" Helpers
+" DOCTAG
+" DOCTAG Helpers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " help opens in a new tab
 cabbrev help tab help
-"
-" Save and run opened file
-" :S escapes spaces in the execution path
-map <F2> <Esc>:w<CR>:!%:p:S<CR>
 
-" Commands
+" DOCTAG
+" DOCTAG Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DOCTAG Hello               print "Hello, world!"
 command Hello echo "Hello, world!"
 
-" Movement
+" DOCTAG
+" DOCTAG Movement
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " select window
 map <C-j> <C-W>j
@@ -197,26 +209,28 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 "
-" move cursor to first non-blank character
+" DOCTAG 0                   move cursor to first non-blank character
 map 0 ^
 
-" Spell Checking
+" DOCTAG
+" DOCTAG Spell Checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" toggle spell checking
+" DOCTAG <leader>ss          toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 "
-" move to the next misspelled word
+" DOCTAG <leader>sn          move to the next misspelled word
 map <leader>sn ]s
-" move to the previous misspelled word
+" DOCTAG <leader>sp          move to the previous misspelled word
 map <leader>sp [s
 "
-" permanently mark word as correct
+" DOCTAG <leader>sa          permanently mark word as correct
 map <leader>sa zg
 "
-" give spelling suggestions
+" DOCTAG <leader>s?          give spelling suggestions
 map <leader>s? z=
 
-" Other
+" DOCTAG
+" DOCTAG Other
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Opens a new tab with the current buffer's path
 "" Super useful when editing files in the same directory
@@ -225,6 +239,6 @@ map <leader>s? z=
 "" Switch CWD to the directory of the open buffer
 "map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" open a window with the current list of errors
+" DOCTAG <leader>cc          open a window with the current list of errors
 map <leader>cc :botright cope<cr>
 
