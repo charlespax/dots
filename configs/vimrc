@@ -2,9 +2,12 @@
 " <leader>? to show the list?
 "
 " VIMDOC
-" VIMDOC                       My vim Configuration
-" VIMDOC                     ========================
+" VIMDOC My vim Configuration
+" VIMDOC ====================
+" VIMDOC $ grep VIMDOC ~/.vimrc # To see a list of available commands
 " VIMDOC
+" VIMDOC Command             Description
+" VIMDOC ------------------  -------------------------------------------------
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Ag searching and cope displaying
@@ -41,8 +44,7 @@
 "nmap j gj
 "nmap k gk
 
-" VIMDOC
-" VIMDOC  General Behavior
+" VIMDOC General Behavior
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible             " vi compatability
 "

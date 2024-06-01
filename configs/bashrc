@@ -11,6 +11,11 @@ bind -x '"\C-f":"tmux-sessionizer"' # tmux-sessionizer
 # Command aliases #
 #=================#
 
+# command: vimdoc
+# description: show a list of command in .vimrc
+# usage: vimdoc
+alias vimdoc="grep VIMDOC ~/.vimrc"
+
 # Command: lz
 # Description: run lazygit
 # Usage: lz
