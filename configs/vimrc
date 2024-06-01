@@ -1,6 +1,7 @@
-" TODO Maybe even make this a command I can execute from within vim; it would be like a help menue. VIMDOC
+" TODO command executed from within vim; it would be like a help menue. VIMDOC
 " <leader>? to show the list?
 "
+" VIMDOC
 " VIMDOC                       My vim Configuration
 " VIMDOC                     ========================
 " VIMDOC
@@ -58,6 +59,13 @@ set noswapfile               " wire buffer to a swapfile
 " VIMDOC                     <leader> is <SPACE> (do not remap this key)
 let mapleader=" "
 nnoremap <SPACE> <Nop>
+
+" VIMDOC jj                  exit insert mode
+inoremap jj <ESC>
+" VIMDOC <C-i>               exit insert mode
+inoremap <C-i> <ESC>
+" VIMDOC <C-w>               exit insert mode
+inoremap <C-w> <ESC>:w<cr>
 
 " VIMDOC
 " VIMDOC User Interface
