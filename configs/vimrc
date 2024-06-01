@@ -1,3 +1,8 @@
+" TODO format comments such that I can grep out all the commands that I would
+" need to know. Documentation comments should be on their own line and all
+" share the same tag. e.g. <leader>l toggles 'list', <leader>s toggles
+" scrolloff, <leader>r toggles relative line numbers
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Ag searching and cope displaying
 ""    requires ag.vim - it's much better than vimgrep/grep
@@ -120,6 +125,8 @@ set smarttab                 " treat groups of spaces as tabs
 "
 set list                     " show unprintable characters described below
 set listchars=tab:⍿·,trail:X,eol:¬
+" toggle display of unprintable characters
+nmap <leader>l :set list!<cr>
 "
 set autoindent               " current indent copied to new line
 set smartindent              " move (de)indent brackets automatically
