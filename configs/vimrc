@@ -55,6 +55,8 @@ nnoremap <SPACE> <Nop>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                   " show line numbers
 set relativenumber           " line numbers are relative to cursor
+" toggle relative line numers
+nmap <leader>r :set relativenumber!<cr>
 "
 set foldcolumn=1             " add column to indicate folded code
 "
@@ -67,7 +69,9 @@ highlight CursorColumn ctermbg=234
 set colorcolumn=80           " vertical line at column n
 highlight ColorColumn ctermbg=234
 "
-set scrolloff=999            " page scrolls to keep n lines around cursor
+" toggle scrolloff
+:nnoremap <Leader>s :let &scrolloff=999-&scrolloff<CR>
+set scrolloff=999           " page scrolls to keep n lines around cursor
 "
 colorscheme lunaperche       " default is lunaperche
 set background=dark          " dark background
