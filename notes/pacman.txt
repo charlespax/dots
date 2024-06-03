@@ -1,0 +1,5 @@
+pacman -Q          # list all installed packages
+pacman -Syu        # update system
+pacman -Q | awk '{print $1}' # names only
+pacman -S <package> # install <package>
+pacman -Ss <package> # search for <package>

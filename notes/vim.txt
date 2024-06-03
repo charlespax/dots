@@ -35,3 +35,13 @@ Ctrl-w [hjkl]   navigate screens
 Ctrl-w [<>]     increase/decrease screen width
 Ctrl-w [+-]     increase/decrease screen height
 Ctrl-w =        equalize screen heights
+
+=== Movement ===
+  e             forward word
+  b             backware word
+  f<c>          move to next character <c> on line
+  F<c>          move to previous character <c> on line
+  Ctrl+d        move down one chunk of lines
+  Ctrl+u        move up one chunk of lines
+  }             move to next empty line
+  {             move to previous empty line
