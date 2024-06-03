@@ -14,7 +14,7 @@ bind -x '"\C-f":"tmux-sessionizer"' # tmux-sessionizer
 # command: vimdoc
 # description: show a list of command in .vimrc
 # usage: vimdoc
-alias vimdoc="grep VIMDOC ~/.vimrc"
+alias vimdoc="grep VIMDOC ~/.vimrc | sed 's/^\" VIMDOC//'"
 
 # Command: lz
 # Description: run lazygit
