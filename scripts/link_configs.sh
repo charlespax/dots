@@ -7,6 +7,7 @@ PWD=`pwd`
 
 ln -i -s $PWD/../configs/bash_profile ~/.bash_profile
 ln -i -s $PWD/../configs/bashrc ~/.bashrc
+ln -i -s $PWD/../configs/xinitrc ~/.xinitrc
 
 ln -i -s $PWD/../configs/.moc ~/ # moc terminal music player
 ln -i -s $PWD/../configs/scimrc ~/.scimrc  # scim spreadsheets
