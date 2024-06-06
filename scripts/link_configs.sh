@@ -5,19 +5,29 @@
 
 PWD=`pwd`
 
+# terminal
 ln -i -s $PWD/../configs/bash_profile ~/.bash_profile
 ln -i -s $PWD/../configs/bashrc ~/.bashrc
+ln -i -s $PWD/../local/scripts ~/.local/
+#ln -i -s $PWD/../configs/zshrc ~/.zshrc
+
+# x server
 ln -i -s $PWD/../configs/xinitrc ~/.xinitrc
 
-ln -i -s $PWD/../configs/.moc ~/ # moc terminal music player
-ln -i -s $PWD/../configs/scimrc ~/.scimrc  # scim spreadsheets
+# text editor
 ln -i -s $PWD/../configs/vimrc ~/.vimrc
-ln -i -s $PWD/../configs/zshrc ~/.zshrc
+#ln -i -s $PWD/../configs/nvim ~/.config/  # neovim
 
-ln -i -s $PWD/../local/scripts ~/.local/
+# media
+#ln -i -s $PWD/../configs/.moc ~/ # moc terminal music player
 
-ln -i -s $PWD/../configs/foot ~/.config/
-ln -i -s $PWD/../configs/neofetch ~/.config/
-ln -i -s $PWD/../configs/nvim ~/.config/  # neovim
-ln -i -s $PWD/../configs/sway ~/.config/
+# utilities
+#ln -i -s $PWD/../configs/neofetch ~/.config/
+
+# sway window manager
+#ln -i -s $PWD/../configs/sway ~/.config/
+#ln -i -s $PWD/../configs/foot ~/.config/
 #waybar
+
+# other
+#ln -i -s $PWD/../configs/scimrc ~/.scimrc  # scim spreadsheets
