@@ -2,103 +2,69 @@
 # - Increase .bash_history size
 #
 
-#=================#
-# Key bindings    #
-#=================#
+# Key bindings
+###############################################################################
 bind -x '"\C-f":"tmux-sessionizer"' # tmux-sessionizer
 
-#=================#
-# Command aliases #
-#=================#
-
+# Command Aliases
+###############################################################################
 # command: vimdoc
-# description: show a list of command in .vimrc
+# description: show a list of commands in .vimrc
 # usage: vimdoc
 alias vimdoc="grep VIMDOC ~/.vimrc | sed 's/^\" VIMDOC//'"
 
-# Command: lz
-# Description: run lazygit
-# Usage: lz
-alias lz='lazygit'
-
-# Command: halp
-# Description: Print help message for this file
-alias halp="echo '\
-prt <file>          - Print text file to default printer \n
-wg                        - wordgrinder \n
-'"
-
-# Command: prt
-# Description: Print text file to default printer.
-# Usage: prt <file>
+# command: prt
+# description: Print text file to default printer.
+# usage: prt <file>
 alias prt='lp -o media=a4 -o cpi=12 -o lpi=7.2 -o page-left=48 -o page-right=48 -o page-top=48 -o page-bottom=48 < '
 
-# Command: wg
-# Description: Shortens the wordgrinder command
-# Usage: wg
-alias wg=wordgrinder
-
-# Convert Wordgrinder files to PDF
-# Requirements: libreoffice
-# Usage: wgprint <filename>
-# Example: wgpring myFile.wg
-wgprint() {
-    local wgFile="$1"
-    wordgrinder -c $wgFile tempWGFile.odt
-    libreoffice --convert-to pdf tempWGFile.odt
-
-    prt tempWGFile.pdf
-    rm tempWGFile.odt tempWGFile.pdf
-}
-
-# Give some default flags to ls
-# Command: ls
-# Description: Give some default flags to ls.
+# give some default flags to ls
+# command: ls
+# description: Give some default flags to ls.
 #              -G    in long listing, don't print group names
 #              -F    append indicator (one of */=>@|) to entries
 #              -h    print human-readable file sixes
-# Usage: ls
+# usage: ls
 alias ls='ls -GFh'
 
-# Command: diff
-# Description: Make diff better
-# Usage: diff
+# command: diff
+# description: Make diff better
+# usage: diff
 alias diff='diff --color'
 
-# Command: axel
-# Description: Make axel better
-# Usage: axel <filename>
+# command: axel
+# description: Make axel better
+# usage: axel <filename>
 alias axel='axel -a'
 
-# Command dmesg
-# Description: Make dmesg better
-# Usage: dmesg
+# command dmesg
+# description: Make dmesg better
+# usage: dmesg
 alias dmesg='dmesg -wH'
 
-# Command: weather
-# Description: Get weather reports
-# Usage: weather
+# command: weather
+# description: Get weather reports
+# usage: weather
 alias weather='curl wttr.in/?n?p?2'
 
-# Command: bc
-# Description: Improved bc calculator
-# Usage: bc
+# command: bc
+# description: Improved bc calculator
+# usage: bc
 alias bc='bc -lq'
 
-# Command: update
-# Description: Update system with a single command. 
-# Usage: update
+# command: update
+# description: Update system with a single command. 
+# usage: update
 alias update="echo 'Updating system via apt-get'; sudo apt-get update; sudo apt-get dist-upgrade; sudo apt-get autoremove"
 
-# Define colors to use in terminal
+# define colors to use in terminal
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-# set PATH to include a ~/bin/ directory
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
+# PATH Variable
+###############################################################################
+export PATH='' # clear PATH variable
 
 export PATH=$PATH:/bin
 export PATH=$PATH:/sbin
@@ -107,11 +73,12 @@ export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:/opt/local/sbin
 
 export PATH=$PATH:/usr/bin
-export PATH=$PATH:/usr/games
 export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/games
 
 export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/games
 export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/local/games
 
+export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/scripts/
