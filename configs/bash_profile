@@ -4,4 +4,11 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-startx # start the xserver and execute .xinitrc
+if [ -n "$TMUX" ]
+then
+	:
+else
+	startx # start the xserver and execute .xinitrc
+fi
+
+
