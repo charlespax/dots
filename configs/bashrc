@@ -4,7 +4,10 @@
 
 # Key bindings
 ###############################################################################
-bind -x '"\C-f":"tmux-sessionizer"' # tmux-sessionizer
+# command: ctrl-f
+# description: ctrl-f -> open fuzzy finder -> tmux <selection>
+# usage: ctrl-f
+bind -x '"\C-f":"tmux-sessionizer"' # ~/.local/scripts/tmux-sessionizer
 
 # Command Aliases
 ###############################################################################
