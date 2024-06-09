@@ -1,7 +1,7 @@
 " VIMDOC ~/.vimrc Configuration File
 "
 " TODO command executed from within vim"
-"
+
 " VIMDOC
 " VIMDOC GENERAL BEHAVIOR
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,7 +155,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " VIMDOC <F2>                Save and run opened file
 " :S escapes spaces in the execution path
 map <F2> <Esc>:w<CR>:!%:p:S<CR>
-
+"
 " VIMDOC <leader>e           explore the current directory
 :nnoremap <Leader>e :Explore<cr>
 
