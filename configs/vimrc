@@ -1,50 +1,9 @@
-" TODO command executed from within vim; it would be like a help menue. VIMDOC
-" <leader>? to show the list?
+" VIMDOC ~/.vimrc Configuration File
+"
+" TODO command executed from within vim"
 "
 " VIMDOC
-" VIMDOC My vim Configuration
-" VIMDOC ====================
-" VIMDOC $ grep VIMDOC ~/.vimrc # To see a list of available commands
-" VIMDOC
-" VIMDOC Command             Description
-" VIMDOC ------------------  -------------------------------------------------
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Ag searching and cope displaying
-""    requires ag.vim - it's much better than vimgrep/grep
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" When you press gv you Ag after the selected text
-"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-"
-"" Open Ag and put the cursor in the right position
-"map <leader>g :Ag 
-"
-"" When you press <leader>r you can search and replace the selected text
-"vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-"
-"" Do :help cope if you are unsure what cope is. It's super useful!
-""
-"" When you search with Ag, display your results in cope by doing:
-""   <leader>cc
-""
-"" To go to the next search result do:
-""   <leader>n
-""
-"" To go to the previous search results do:
-""   <leader>p
-""
-"
-"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-"map <leader>n :cn<cr>
-"map <leader>p :cp<cr>
-"
-"" cabbrev help tab help 
-"vmap j gj
-"vmap k gk
-"nmap j gj
-"nmap k gk
-
-" VIMDOC General Behavior
+" VIMDOC GENERAL BEHAVIOR
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible             " vi compatability
 "
@@ -61,16 +20,14 @@ set noswapfile               " wire buffer to a swapfile
 " VIMDOC                     <leader> is <SPACE> (do not remap this key)
 let mapleader=" "
 nnoremap <SPACE> <Nop>
-
+"
 " VIMDOC jj                  exit insert mode
 inoremap jj <ESC>
 " VIMDOC <C-i>               exit insert mode
 inoremap <C-i> <ESC>
-" VIMDOC <C-w>               exit insert mode
-inoremap <C-w> <ESC>:w<cr>
 
 " VIMDOC
-" VIMDOC User Interface
+" VIMDOC USER INTERFACE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                   " show line numbers
 set relativenumber           " line numbers are relative to cursor
@@ -105,7 +62,7 @@ set laststatus=2             " Always show the status line
 map <silent> <leader><cr> :nohlsearch<cr>
 
 " VIMDOC
-" VIMDOC Search
+" VIMDOC SEARCH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                 " highlight search results
 set incsearch                " highlight search results as you type
@@ -139,7 +96,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 " VIMDOC
-" VIMDOC Text Behavior
+" VIMDOC TEXT BEHAVIOR
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab                 " treat groups of spaces as tabs
 "
@@ -171,7 +128,7 @@ filetype plugin on           " filetype plugins
 filetype indent on           " indentation plugins
 
 " VIMDOC
-" VIMDOC File Handling 
+" VIMDOC FILE HANDLING 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoread                 " reload file if externally edited
 "
@@ -180,14 +137,16 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 "
 " VIMDOC <leader>w           write file
 nmap <leader>w :w!<cr>
-"
+" VIMDOC <C-w>               write file
+nnoremap <C-w> <ESC>:w<cr>
+" VIMDOC <C-w>               exit insert mode and write file
+inoremap <C-w> <ESC>:w<cr>
 " VIMDOC :W                  write file with sudo premissions
 command W w !sudo tee % > /dev/null
 "
 " when writing a file, delete trailing wite space
 func! DeleteTrailingWS()
-	exe "normal mz"
-	%s/\s\+$//ge
+	exe "normal mz" %s/\s\+$//ge
 	exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
@@ -197,20 +156,23 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " :S escapes spaces in the execution path
 map <F2> <Esc>:w<CR>:!%:p:S<CR>
 
+" VIMDOC <leader>e           explore the current directory
+:nnoremap <Leader>e :Explore<cr>
+
 " VIMDOC
-" VIMDOC Helpers
+" VIMDOC HELPERS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " help opens in a new tab
 cabbrev help tab help
 
 " VIMDOC
-" VIMDOC Commands
+" VIMDOC COMMANDS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMDOC Hello               print "Hello, world!"
 command Hello echo "Hello, world!"
 
 " VIMDOC
-" VIMDOC Movement
+" VIMDOC MOVEMENT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " select window
 map <C-j> <C-W>j
@@ -222,7 +184,7 @@ map <C-l> <C-W>l
 map 0 ^
 
 " VIMDOC
-" VIMDOC Spell Checking
+" VIMDOC SPELL CHECKING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMDOC <leader>ss          toggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -239,7 +201,7 @@ map <leader>sa zg
 map <leader>s? z=
 
 " VIMDOC
-" VIMDOC Other
+" VIMDOC OTHER
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Opens a new tab with the current buffer's path
 "" Super useful when editing files in the same directory
