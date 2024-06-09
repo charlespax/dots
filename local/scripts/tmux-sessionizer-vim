@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/gits -mindepth 1 -maxdepth 2 -type d | fzf)
+	selected=$(find ~/gits -mindepth 1 -maxdepth 4 | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -21,13 +21,11 @@ tmux_running=$(pgrep tmux)
 #fi
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -d -s $selected_name
-	tmux send-keys -t $selected_name "vim $selected" Enter
-	tmux attach -t $selected_name
+	tmux new-session -s $selected_name vim $selected
 	exit 0
 fi
 
-#i ! tmux has-session -t=$selected_name 2> /dev/null; then
+#if ! tmux has-session -t=$selected_name 2> /dev/null; then
 #	echo not has session
 #	tmux new-session -d -s $selected_name
 #	tmux send-keys -t $selected_name "vim $selected" Enter
