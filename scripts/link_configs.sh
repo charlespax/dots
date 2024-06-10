@@ -9,6 +9,7 @@ PWD=`pwd`
 ln -i -s $PWD/../configs/bash_profile ~/.bash_profile
 ln -i -s $PWD/../configs/bash_logout ~/.bash_logout
 ln -i -s $PWD/../configs/bashrc ~/.bashrc
+ln -i -s $PWD/../configs/tmux.conf ~/.tmux.conf
 ln -i -s $PWD/../local/scripts ~/.local/
 #ln -i -s $PWD/../configs/zshrc ~/.zshrc
 

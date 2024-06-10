@@ -1,39 +1,45 @@
 #!/usr/bin/env bash
 
+# if one parameter has been passed to this script,
+# that parameter is "selected".
+# Otherwise, use fuzzy finder to make a selection.
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/gits -mindepth 1 -maxdepth 4 | fzf)
+	selected=$(\
+		find ~/gits \
+		-mindepth 1 -maxdepth 4 -not -path '*\/.**' | fzf)
 fi
 
+# if the string $selected is empty or NULL, exit
 if [[ -z $selected ]]; then
 	exit 0
 fi
 
+# take the basename of $selected and replace dots with underscores
 selected_name=$(basename "$selected" | tr . _)
+
+# get the PID for each tmux instance
 tmux_running=$(pgrep tmux)
 
-#if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-#	tmux new-session -d -s $selected_name
-#	tmux send-keys -t $selected_name "vim $selected" Enter
-#	tmux attach -t $selected_name
-#	exit 0
-#fi
-
+# $TMUX is set in a tmux session, blank otherwise
+# if this is not a tmux session and there are no tmux sessions running,
+# start a new tmux session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 	tmux new-session -s $selected_name vim $selected
 	exit 0
 fi
 
-#if ! tmux has-session -t=$selected_name 2> /dev/null; then
-#	echo not has session
-#	tmux new-session -d -s $selected_name
-#	tmux send-keys -t $selected_name "vim $selected" Enter
-#	tmux attach -t $selected_name
-#	exit 0
-#fi
+# if there is no tmux session named $selected_name,
+# create a new tmux session named $selected_name
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+	tmux new-session -d -s $selected_name
+	tmux send-keys -t $selected_name "vim $selected" Enter
+	tmux attach -t $selected_name
+	exit 0
+fi
 
-#tmux switch-client -t $selected_name
+
 if [[ -z $TMUX ]]; then
 	tmux attach-session -t $selected_name
 else
