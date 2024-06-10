@@ -22,9 +22,9 @@ selected_name=$(basename "$selected" | tr . _)
 # get the PID for each tmux instance
 tmux_running=$(pgrep tmux)
 
-# $TMUX is set in a tmux session, blank otherwise
+# NOTE: $TMUX is set in a tmux session, blank otherwise
 # if this is not a tmux session and there are no tmux sessions running,
-# start a new tmux session
+# start a new tmux session and set the current working directory
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 	tmux new-session -c $(dirname $selected) -s $selected_name vim $selected
 	exit 0
