@@ -26,7 +26,7 @@ tmux_running=$(pgrep tmux)
 # if this is not a tmux session and there are no tmux sessions running,
 # start a new tmux session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -s $selected_name vim $selected
+	tmux new-session -c $(dirname $selected) -s $selected_name vim $selected
 	exit 0
 fi
 
