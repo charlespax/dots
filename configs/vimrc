@@ -180,8 +180,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 "
-" VIMDOC 0                   move cursor to first non-blank character
-map 0 ^
+" VIMDOC -                   move cursor to first non-blank character
+map - ^
 
 " VIMDOC
 " VIMDOC SPELL CHECKING
