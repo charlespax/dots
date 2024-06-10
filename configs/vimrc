@@ -32,18 +32,18 @@ inoremap <C-i> <ESC>
 set number                   " show line numbers
 set relativenumber           " line numbers are relative to cursor
 " VIMDOC <leader>r           toggle relative line numers
-nmap <leader>r :set relativenumber!<cr>
+nnoremap <leader>r :set relativenumber!<cr>
 "
 set foldcolumn=1             " add column to indicate folded code
 "
 set cursorline               " horizontal line at cursor
 highlight CursorLine ctermbg=234
-"
 set cursorcolumn             " vertical line at cursor
 highlight CursorColumn ctermbg=234
-"
 set colorcolumn=80           " vertical line at column n
 highlight ColorColumn ctermbg=234
+" VIMDOC <leader>c           toggle cursor crosshairs
+nnoremap <leader>c :set cursorline! cursorcolumn!<cr>
 "
 " VIMDOC <leader>s           toggle scrolloff
 :nnoremap <Leader>s :let &scrolloff=999-&scrolloff<CR>
@@ -103,7 +103,7 @@ set smarttab                 " treat groups of spaces as tabs
 set list                     " show unprintable characters described below
 set listchars=tab:⍿·,trail:X,eol:¬
 " VIMDOC <leader>l           toggle display of unprintable charachters
-nmap <leader>l :set list!<cr>
+nnoremap <leader>l :set list!<cr>
 "
 set autoindent               " current indent copied to new line
 set smartindent              " move (de)indent brackets automatically
@@ -180,8 +180,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 "
-" VIMDOC 0                   move cursor to first non-blank character
-map 0 ^
+" VIMDOC -                   move cursor to first non-blank character
+map - ^
 
 " VIMDOC
 " VIMDOC SPELL CHECKING
