@@ -13,6 +13,7 @@ ln -i -s $PWD/../configs/tmux.conf ~/.tmux.conf
 ln -i -s $PWD/../local/scripts ~/.local/
 ln -i -s $PWD/../local/wallpapers ~/.local/
 #ln -i -s $PWD/../configs/zshrc ~/.zshrc
+ln -i -s $PWD/../configs/sxhkd ~/.config/
 
 # x server
 ln -i -s $PWD/../configs/xinitrc ~/.xinitrc
@@ -28,8 +29,8 @@ ln -i -s $PWD/../configs/vimrc ~/.vimrc
 #ln -i -s $PWD/../configs/neofetch ~/.config/
 
 # sway window manager
-#ln -i -s $PWD/../configs/sway ~/.config/
-#ln -i -s $PWD/../configs/foot ~/.config/
+ln -i -s $PWD/../configs/sway ~/.config/
+ln -i -s $PWD/../configs/foot ~/.config/
 #waybar
 
 # other

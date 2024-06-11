@@ -1,0 +1,3 @@
+On Ubuntu sway Remix
+$ nmtui # or
+$ nmcli
