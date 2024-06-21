@@ -19,7 +19,7 @@ bind -x '"\C-g":"tmux-sessionizer-vim"' # ~/.local/scripts/tmux-sessionizer
 # command: youtube
 # description: use terminal to watch youtube videos
 # usage: youtube
-alias youtube="ytfzf -l"
+alias yt="ytfzf -l"
 
 # command: vimdoc
 # description: show a list of commands in .vimrc
