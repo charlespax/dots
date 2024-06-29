@@ -26,18 +26,23 @@ applist+=' adobe-source-code-pro-fonts' # nice font from Adobe
 
 # Desktop Environment
 applist+=' feh'              # desktop background
+applist+=' pamixer'           # volume control
+#applist+=' brightnessctl'    # brightness control (ubuntu sway)
+#applist+=' pavucontrol'      # (ubuntu sway)
 
 # Web
 applist+=' firefox'          # heavy web browser
 applist+=' gtk3'             # required to build surf web browser
 applist+=' gcr'              # required to build surf web browser
 applist+=' webkit2gtk'       # required to build surf web browser
+#applist+=' w3m'              # terminal web browser
 
 # Documentation
 applist+=' mandoc'           # man pages
 applist+=' tldr'             # man page chreatsheets
 
 # Terminal Utilities
+applist+=' vim'              # text editor
 applist+=' fastfetch'        # show computer info
 applist+=' acpi'             # battery information
 applist+=' htop'             # system monitor
@@ -47,13 +52,13 @@ applist+=' less'             # enhanced version of more
 applist+=' tree'             # view a directory structure
 applist+=' udisks2'          # usb disk mounting
 
-applist+=' vim'              # text editor
+# Development
 applist+=' git'              # version control
 applist+=' base-devel'       # core build utilities
-#applist+=' w3m'              # terminal web browser
-#applist+=' brightnessctl'    # brightness control (ubuntu sway)
-#applist+=' pavucontrol'      # (ubuntu sway)
+
+# Other
 #applist+=' ttf-font-awesome' #
 #applist+=' ttf-roboto-mono'  #
+
 
 sudo pacman -S --needed $applist
