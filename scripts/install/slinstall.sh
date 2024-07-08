@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Install suckless utilties
+
 mkdir ~/gits/
 
 cd ~/gits

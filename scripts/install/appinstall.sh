@@ -52,9 +52,14 @@ applist+=' less'             # enhanced version of more
 applist+=' tree'             # view a directory structure
 applist+=' udisks2'          # usb disk mounting
 
+# Multimedia
+applist+=' gimp'             # image editor
+
+
 # Development
 applist+=' git'              # version control
 applist+=' base-devel'       # core build utilities
+applist+=' android-tools'    # required to install grapheneos on phone
 
 # Other
 #applist+=' ttf-font-awesome' #
@@ -62,3 +67,17 @@ applist+=' base-devel'       # core build utilities
 
 
 sudo pacman -S --needed $applist
+
+
+
+# clipboard manager
+# color picker
+# document viewer
+# email client
+# file manager
+# gamma and day/night adjustment
+# image viewer
+# login manager
+# notification daemon
+# power menu wlogout
+# sc
