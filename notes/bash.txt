@@ -34,3 +34,6 @@ Crtl-b w            show list of terminal sessions
 === acpi ===
 Tool to display battey information
 
+=== background/foreground ===
+Ctrl-z              move process to the background
+$ fg                move process to the foreground
