@@ -1,6 +1,6 @@
 # TODO
 # - Increase .bash_history size
-#
+# - add description to .bashrc
 
 # Key bindings
 ###############################################################################
@@ -9,10 +9,10 @@
 # usage: ctrl-f
 bind -x '"\C-f":"tmux-sessionizer"' # ~/.local/scripts/tmux-sessionizer
 
-# command: ctrl-f
-# description: ctrl-f -> open fuzzy finder -> tmux <selection>
+# command: ctrl-g
+# description: ctrl-g -> open fuzzy finder -> tmux <selection>
 # usage: ctrl-f
-bind -x '"\C-g":"tmux-sessionizer-vim"' # ~/.local/scripts/tmux-sessionizer
+bind -x '"\C-g":"tmux-sessionizer-vim"' # ~/.local/scripts/tmux-sessionizer-vim
 
 # Command Aliases
 ###############################################################################
