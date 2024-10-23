@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# Get OS information
+. /etc/os-release
+OS=$ID
+
+if [ $OS == 'arch' ]; then
+	echo Welcome to the app installer!!!
+else
+	echo ERROR: this scrip only works on arch
+	exit
+fi
+
+# Applications in the 'applist' are installed on top of
+# the Arch base install
 applist=''
 
 # watch YouTube videos at the terminal
