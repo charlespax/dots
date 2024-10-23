@@ -7,7 +7,7 @@ if [[ $# -eq 1 ]]; then
 	selected=$1
 else
 	selected=$(\
-		find ~/github \
+		find ~/gits \
 		-mindepth 1 -maxdepth 4 -not -path '*\/.**' | fzf)
 fi
 
