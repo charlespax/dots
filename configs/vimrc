@@ -142,7 +142,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 "
 " VIMDOC <leader>w           write file
 nmap <leader>w :w!<cr>
-" VIMDOC <C-w>               exit insert mode and write file
+" VIMDOC <C-w> <ESC>         exit insert mode and write file
 inoremap <C-w> <ESC>:w<cr>
 " VIMDOC :W                  write file with sudo premissions
 command W w !sudo tee % > /dev/null
